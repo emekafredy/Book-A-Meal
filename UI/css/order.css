@@ -1,0 +1,134 @@
+body{
+  background: #ccc;
+}
+
+.container { 
+  width: 95%;
+  margin: 10% 2.5%;
+  height: 100%;
+}
+.panel {
+  margin: 0 0 30px 0;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: #882222;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+.panel-body {
+ padding: 10px 30px;
+}
+
+.body-header {
+  background: #ccc;
+  width: 100%;
+  padding: 15px 0 15px 15px;
+  border-radius: 8px;
+}
+
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #882222;
+  padding: .35em;
+}
+
+table th {
+  padding: .625em;
+  text-align: center;
+  border: 3px solid #882222;
+}
+
+table td {
+  padding: .625em;
+  text-align: center;
+  border: 1px solid #000;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.process-order {
+  background: #3B5998;
+  outline: none;
+  color: #ddd;
+  font-weight: bold;
+  opacity: 0.9;
+  width: 80%;
+  padding: 10px 20px;
+  border-radius: 7px;
+}
+
+.process-order:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
