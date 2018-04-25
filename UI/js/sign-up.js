@@ -1,4 +1,4 @@
-function openCity(evt, signupType) {
+function openForm(evt, signupType) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("signup-box");
     for (i = 0; i < tabcontent.length; i++) {
