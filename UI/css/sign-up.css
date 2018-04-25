@@ -1,5 +1,5 @@
 
-/*REMOVED SIGN-UP SELECTOR*/
+
 .tab {
     overflow: hidden;
     border-bottom: 2px solid #882222;
@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-/* Style the buttons inside the tab */
+
 .tab button {
     background-color: inherit;
     float: left;
@@ -22,7 +22,7 @@
     font-size: 17px;
 }
 
-/* Change background color of buttons on hover */
+
 .tab button:hover {
     background-color: #882222;
 }
@@ -32,7 +32,7 @@
 }
 
 
-/*REMOVED SIGN-UP SELECTOR*/
+
 .sign-up {
   min-height: 100%;
 }
