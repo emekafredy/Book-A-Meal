@@ -4,7 +4,6 @@
 			<title>Book-A-Meal</title>
 
 			<link rel="stylesheet" href="./css/styles.css">
-			<!-- <link rel="stylesheet" href="./css/nav-res.css"> -->
 			<link rel="stylesheet" href="./css/login.css">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -17,38 +16,50 @@
 			  <a href="index.html" class="brand">Book-A-Meal</a>
 
 			<div class="right">
-			  <!-- <div class="dropdown">
-			    <button class="dropbtn">Caterer 
-			    </button>
-			    <div class="dropdown-content">
-			      <a href="set-menu.html">Set Menu</a>
-			      <a href="edit-menu.html">Edit Menu</a>
-			      <a href="order.html">Order Summary</a>
-			    </div>
-			  </div> -->
-			  <!-- <a href="menu.html">Menu</a> -->
 			  <a href="sign-up.html">Sign Up</a>
 			  <a href="login.html" class="active">Login</a>
-			  <!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toggleMenu()">&#9776;</a> -->
 			 </div>
 			</nav>
 			
 
 			<!-- BODY -->
 			<div class="login-page">
-				<div class="login-box">
+
+				<div class="tab">
+					<button class="tablinks" onclick="openForm(event, 'customer')" id="defaultOpen">Customer</button>
+					<button class="tablinks" onclick="openForm(event, 'caterer')">Caterer</button>
+				</div>
+
+				<div id="customer" class="login-box">
 					<br>
-					<h3>Login Here</h3>
+					<h3>Login as Customer</h3>
 					<form action="">						
 						<input type="text" name="" placeholder="Enter email address">
 
 						<input type="password" name="" placeholder="Enter password">
 
-						<input type="submit" value="Login">
+						<a href="menu.html">Login</a><br><br><br>
+
 						<p>Don't have an account? <a href="sign-up.html">Sign up</a></p>
 
 					</form>
 				</div>
+
+				<div id="caterer" class="login-box">
+					<br>
+					<h3>Login as Caterer</h3>
+					<form action="">						
+						<input type="text" name="" placeholder="Enter email address">
+
+						<input type="password" name="" placeholder="Enter password">
+
+						<a href="set-menu.html">Login</a><br><br><br>
+
+						<p>Don't have an account? <a href="sign-up.html">Sign up</a></p>
+
+					</form>
+				</div>
+
 			</div>
 			
 			
@@ -60,5 +71,6 @@
 			</div>
 
 			<script src="./js/index.js"></script>
+			<script src="./js/login.js"></script>
     </body>
 </html>

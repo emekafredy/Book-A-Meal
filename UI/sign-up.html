@@ -4,42 +4,32 @@
 			<title>Book-A-Meal</title>
 
             <link rel="stylesheet" href="./css/styles.css">
-            <!-- <link rel="stylesheet" href="./css/nav-res.css"> -->
             <link rel="stylesheet" href="./css/sign-up.css">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
 
+		<!-- NAVIGATION -->
 		<nav id="navBar" class="nav-bar">
 
 		  <a href="index.html" class="brand">Book-A-Meal</a>
 
 		<div class="right">
-		  <!-- <div class="dropdown">
-		    <button class="dropbtn">Caterer 
-		    </button>
-		    <div class="dropdown-content">
-		      <a href="set-menu.html">Set Menu</a>
-		      <a href="edit-menu.html">Edit Menu</a>
-		      <a href="order.html">Order Summary</a>
-		    </div>
-		  </div>
-		  <a href="menu.html">Menu</a> -->
 		  <a href="sign-up.html" class="active">Sign Up</a>
 		  <a href="login.html">Login</a>
-		  <!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toggleMenu()">&#9776;</a> -->
 		 </div>
 		</nav>
 
 		
 		
 		<div class="sign-up">
+
 			<div class="tab">
-			  <button class="tablinks" onclick="openCity(event, 'Customer')" id="defaultOpen">Customer</button>
-			  <button class="tablinks" onclick="openCity(event, 'Caterer')">Caterer</button>
+			  <button class="tablinks" onclick="openForm(event, 'customer')" id="defaultOpen">Customer</button>
+			  <button class="tablinks" onclick="openForm(event, 'caterer')">Caterer</button>
 			</div>
 
-			<div id="Customer" class="signup-box">
+			<div id="customer" class="signup-box">
 				<form action="">
 					<h2>Sign Up as Customer</h2>
 					<p>Please fill out every field</p>
@@ -57,7 +47,7 @@
 				</form>
 			</div>
 
-			<div id="Caterer" class="signup-box">
+			<div id="caterer" class="signup-box">
 				<form action="">
 					<h2>Sign Up as Caterer</h2>
 					<p>Please fill out every field</p>
