@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import Meals from './database/meals';
+import Menu from './database/menu';
 
 // Set up the express app
 const app = express();
@@ -18,7 +19,7 @@ app.get('/api/v1/meals', (req, res) => {
   res.status(200).send({
     success: 'true',
     message: 'meals retrieved successfully',
-    todos: Meals
+    meals: Meals
   })
 });
 
@@ -127,6 +128,56 @@ app.delete('/api/v1/meals/:id', (req, res) => {
     success: 'false',
     message: 'Meal option not found'
   })
+});
+
+
+
+//MENU
+
+
+//GET - Get the menu for the day
+app.get('/api/v1/menu', (req, res) => {
+  res.status(200).send({
+    success: 'true',
+    message: 'Menu retrieved successfully',
+    menu: Menu
+  })
+});
+
+
+//POST - Setup the menu for the day
+const catererMenu = [];
+app.post('/api/v1/menu', (req, res) => {
+
+  const found = Menu.find((m) => {
+    return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
+  })
+
+  if(found) {
+    const cfound = catererMenu.find((m) => {
+      return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
+    })
+    
+    if(!cfound) {
+      catererMenu.push(found)
+      res.status(201).send({
+        success: 'true',
+        message: 'Meal successfully added to menu',
+        menu: catererMenu
+      })
+    } else {
+      res.status(409).send({
+        message: 'Meal already exists'
+      })
+    }
+  } else {
+    res.status(404).send({
+      message: 'Meal does not exist'
+    })
+  }
+
+
+  
 });
 
 
