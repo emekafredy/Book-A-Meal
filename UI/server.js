@@ -22,6 +22,26 @@ app.get('/api/v1/meals', (req, res) => {
   })
 });
 
+// GET- Get a specific meal option
+app.get('/api/v1/meals/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+
+  Meals.map((meal) => {
+    if(meal.id === id) {
+      return res.status(200).send({
+        success: 'true',
+        message: 'Meal retrieved successfully',
+        meal: meal
+      });
+    }
+  });
+
+  return res.status(404).send({
+    success: 'false',
+    message: `${title} does not exist`
+  });
+});
+
 // POST - Add a meal option
 app.post('/api/v1/meals', (req, res) => {
   if(!req.body.title || !req.body.description || !req.body.price) {
@@ -45,7 +65,50 @@ app.post('/api/v1/meals', (req, res) => {
   });
 });
 
+// PUT - Update the information of a meal option
+app.put('/api/v1/meals/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
 
+  let mealFound;
+  let mealIndex;
+
+  Meals.map((meal, index) => {
+    if (meal.id === id) {
+      mealFound = meal;
+      mealIndex = index;
+    }  
+  });
+
+  if (!mealFound) {
+    return res.status(404).send({
+      success: 'false',
+      message: 'Meal not found'
+    });
+  }
+
+  if (!req.body.title || !req.body.description || !req.body.price) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'Please fill out the required fields'
+    });
+  }
+
+  const updatedMeal = {
+    id: mealFound.id,
+    title: req.body.title || mealFound.title,
+    description: req.body.description || mealFound.description,
+    imageUrl: req.body.imageUrl || mealFound.imageUrl,
+    price: req.body.price || mealFound.price
+  }
+
+  Meals.splice(mealIndex, 1, updatedMeal);
+
+  return res.status(201).send({
+    success: 'true',
+    message: 'meal updated successfully',
+    updatedMeal,
+  });
+});
 
 
 const port = 4500;
