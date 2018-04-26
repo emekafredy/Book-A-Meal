@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 
 import Meals from './database/meals';
 import Menu from './database/menu';
+import Orders from './database/order'
 
 // Set up the express app
 const app = express();
@@ -149,17 +150,17 @@ app.get('/api/v1/menu', (req, res) => {
 const catererMenu = [];
 app.post('/api/v1/menu', (req, res) => {
 
-  const found = Menu.find((m) => {
+  const foundInMenu = Menu.find((m) => {
     return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
   })
 
-  if(found) {
-    const cfound = catererMenu.find((m) => {
+  if(foundInMenu) {
+    const foundInCatererMenu = catererMenu.find((m) => {
       return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
     })
     
-    if(!cfound) {
-      catererMenu.push(found)
+    if(!foundInCatererMenu) {
+      catererMenu.push(foundInMenu)
       res.status(201).send({
         success: 'true',
         message: 'Meal successfully added to menu',
@@ -175,10 +176,118 @@ app.post('/api/v1/menu', (req, res) => {
       message: 'Meal does not exist'
     })
   }
-
-
-  
 });
+
+
+// ORDER
+
+//POST - Select Meal option from Menu
+const customerOrder = [];
+app.post('/api/v1/orders', (req, res) => {
+
+  const orderFound = Menu.find((m) => {
+    return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
+  })
+
+  if(orderFound) {
+    const foundCustomerOrder = customerOrder.find((m) => {
+      return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
+    })
+    
+    if(!foundCustomerOrder) {
+      orderFound.orderId = customerOrder.length + 1;
+      orderFound.quantity = 2;
+      orderFound.totalPrice = orderFound.quantity * orderFound.price;
+      customerOrder.push(orderFound)
+      res.status(201).send({
+        success: 'true',
+        message: 'Order selected',
+        menu: customerOrder
+      })
+    } else {
+      res.status(409).send({
+        message: 'Order already selected'
+      })
+    }
+  }
+});
+
+//GET OREDERS
+app.get('/api/v1/orders', (req, res) => {
+  res.status(200).send({
+    success: 'true',
+    message: 'Orders retrieved successfully',
+    orders: Orders
+  })
+});
+
+app.get('/api/v1/orders/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+
+  Orders.map((order) => {
+    if(order.id === id) {
+      return res.status(200).send({
+        success: 'true',
+        message: 'Order retrieved successfully',
+        order: order
+      });
+    }
+  });
+
+  return res.status(404).send({
+    success: 'false',
+    message: `Order does not exist`
+  });
+});
+
+// PUT - Update the information of a meal option
+app.put('/api/v1/orders/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+
+  let orderFound;
+  let orderIndex;
+
+  Orders.map((order, index) => {
+    if (order.id === id) {
+      orderFound = order;
+      orderIndex = index;
+    }  
+  });
+
+  if (!orderFound) {
+    return res.status(404).send({
+      success: 'false',
+      message: 'Order not found'
+    });
+  }
+
+  if (!req.body.quantity) {
+    return res.status(400).send({
+      success: 'false',
+      message: 'Please enter an appropriate quantity'
+    });
+  }
+
+  const updatedOrder = {
+    id: req.body.id || orderFound.id,
+    mealTitle: req.body.title || orderFound.title,
+    description: req.body.description || orderFound.description,
+    price: req.body.price || orderFound.price,
+    quantity:  req.body.quantity || orderFound.quantity,
+    totalPrice: req.body.totalPrice  || orderFound.totalPrice,
+  }
+
+  Meals.splice(orderIndex, 1, updatedOrder);
+
+  return res.status(201).send({
+    success: 'true',
+    message: 'order updated successfully',
+    updatedOrder,
+  });
+});
+
+
+
 
 
 const port = 4500;
