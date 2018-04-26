@@ -38,7 +38,7 @@ app.get('/api/v1/meals/:id', (req, res) => {
 
   return res.status(404).send({
     success: 'false',
-    message: `${title} does not exist`
+    message: `Meal Option does not exist`
   });
 });
 
@@ -108,6 +108,25 @@ app.put('/api/v1/meals/:id', (req, res) => {
     message: 'meal updated successfully',
     updatedMeal,
   });
+});
+
+//DELETE - Remove a meal option
+app.delete('/api/v1/meals/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  Meals.map((meal, index) => {
+    if(meal.id === id) {
+      Meals.splice(index, 1);
+      return res.status(200).send({
+        success: 'true',
+        message: 'Meal option successfully deleted'
+      });
+    }
+  });
+
+  return res.status(404).send({
+    success: 'false',
+    message: 'Meal option not found'
+  })
 });
 
 
