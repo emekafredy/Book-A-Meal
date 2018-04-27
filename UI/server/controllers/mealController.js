@@ -5,7 +5,7 @@ const MealController = {
   getMeals(req, res) {
     res.status(200).send({
       success: 'true',
-      message: 'meals retrieved successfully',
+      message: 'Meals retrieved successfully',
       meals: Meals
     })
   },
