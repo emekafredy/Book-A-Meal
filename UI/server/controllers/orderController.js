@@ -14,13 +14,9 @@ const OrderController = {
       })
       
       if(!foundCustomerOrder) {
-        orderFound.id = customerOrder.length + 1;
-        orderFound.quantity = 2;
-        orderFound.totalPrice = orderFound.quantity * orderFound.price;
-        customerOrder.push(orderFound)
         res.status(201).send({
           success: 'true',
-          message: 'Order selected',
+          message: 'Order successfully selected',
           menu: customerOrder
         })
       } else {
