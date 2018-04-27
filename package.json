@@ -4,7 +4,8 @@
   "description": "An app that enhances customer-to-vendor interaction for easy food delivery",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./server/test",
+    "test": "nyc mocha --compilers js:babel-core/register ./server/test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint **/*.js",
     "start": "nodemon server.js --exec babel-node --"
   },
@@ -46,6 +47,9 @@
     "volleyball": "^1.5.0"
   },
   "devDependencies": {
-    "nodemon": "^1.17.3"
+    "coveralls": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "nodemon": "^1.17.3",
+    "nyc": "^11.7.1"
   }
 }
