@@ -12,6 +12,7 @@ const port = process.env.PORT || 4500;
 // Parse incoming requests data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('UI'));
 
 
 

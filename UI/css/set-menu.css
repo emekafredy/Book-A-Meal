@@ -1,10 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Gaegu|IBM+Plex+Mono|Noto+Serif|Roboto+Slab');
+
 body {
-  background: #ccc;
+  margin: 0;
+  margin: 0;
+	background-image: url('../files/bread.jpeg');
+  background-size: cover;
+  font-family: 'Roboto Slab', serif;
 }
 
 html {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-bar {
+  background-color: #882222;
+}
+
+.brand {
+  background: #13232f;
+}
+
+.nav-bar a:hover {
+  background: #13232f !important;
+}
+
+.active {
+  background-color: #13232f;
+  color: white;
 }
 
 .container {
@@ -31,7 +54,7 @@ h1 {
   cursor: pointer;
   border: 3px solid #ccc;
   border-radius: 10px;
-  background-color: #882222;
+  background-color: #D52F2F;
   justify-content: center;
   align-items: center;
 
@@ -58,25 +81,16 @@ h1 {
   opacity: 0.86;
 }
 
-.btn:hover, .submit:hover {
+.btn:hover {
   cursor: pointer;
   opacity: 1;
 }
 
-.submit {
-  width: 20%;
-  margin: 0 40%;
-  padding: 10px 0;
-  outline: none;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.4em;
-  background: #13232f;
-  opacity: 0.86;
+
+@media screen and (max-width: 600px) {
 }
 
 
-@media screen and (max-width: 600px) {
-
+.footer {
+  background: #882222; 
 }

@@ -1,5 +1,24 @@
 body {
-  background: #ccc;
+  background: #fff;
+  font-family: cursive;
+}
+
+
+.nav-bar {
+  background-color: #882222;
+}
+
+.brand {
+  background: #13232f;
+}
+
+.nav-bar a:hover {
+  background: #13232f !important;
+}
+
+.active {
+  background-color: #13232f;
+  color: white;
 }
 
 .container {
@@ -27,7 +46,7 @@ h1 {
   cursor: pointer;
   border:  none;
   border-radius: 10px;
-  background-color: #882222;
+  background-color: #D52F2F;
   justify-content: center;
   align-items: center;
 
@@ -55,7 +74,7 @@ h1 {
 }
 
 .box > p {
-  background: #fff;
+  background: #ccc;
   height: 50px;
 }
 
@@ -84,3 +103,7 @@ h1 {
 }
 
 
+
+.footer {
+  background: #882222; 
+}

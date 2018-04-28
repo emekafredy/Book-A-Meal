@@ -1,3 +1,20 @@
+.nav-bar {
+  background-color: #882222;
+}
+
+.brand {
+  background: #13232f;
+}
+
+.nav-bar a:hover {
+  background: #13232f !important;
+}
+
+.active {
+  background-color: #13232f;
+  color: white;
+}
+
 .container {
   width: 90%;
   margin: 0 5% 5% 5%;
@@ -135,4 +152,9 @@ table th {
   table td:last-child {
     border-bottom: 0;
   }
+}
+
+
+.footer {
+  background: #882222; 
 }

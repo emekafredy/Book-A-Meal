@@ -29,16 +29,16 @@
 		<div class="container">
 			<h2 style="text-align: center;">Orders</h2><hr>
 
-			<div class="panel">
-				<div class="heading">
-					<p>ORDER SUMMARY</p>
-				</div>
+			
+				
+					<p style="text-align: center; font-weight: bold;">ORDER SUMMARY</p>
+				
 				<div class="order-grid">
 					<button class="orders-btn btn-orders">Orders Received <a href="">(25)</a></button>
-					<button class="orders-btn btn-processed">Orders Processed <a href="">(20)</a></button>
-					<button class="orders-btn btn-pending">Orders Pending <a href="">(5)</a></button>
-				</div>
-			</div><hr>
+					<button class="orders-btn btn-processed" id="processedOrders">Orders Processed <a href="">(20)</a></button>
+					<button class="orders-btn btn-pending" id="processOrder">Orders Pending <a href="">(5)</a></button>
+				</div><hr>
+			
 
 			<div class="panel">
 				<div class="heading">
@@ -54,7 +54,6 @@
 					      <th scope="col">Unit Price</th>
 					      <th scope="col">Total Price</th>
 					      <th scope="col">Status</th>
-					      <th scope="col">Action</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -64,8 +63,7 @@
 					      <td data-label="Quantity">2 Plates</td>
 					      <td data-label="Unit Price">&#8358;400</td>
 					      <td data-label="Total Price">&#8358;800</td>
-					      <td data-label="Status">Processed</td>
-					      <td data-label="Actions">Done &#x2713;</td>
+					      <td data-label="Status">Processed &#x2713;</td>
 					    </tr>
 					    <tr>
 					      <td scope="row" data-label="ID">2</td>
@@ -74,7 +72,6 @@
 					      <td data-label="Unit Price">&#8358;350</td>
 					      <td data-label="Total Price">&#8358;350</td>
 					      <td data-label="Status">Pending</td>
-					      <td data-label="Actions"><button class="process-order" id="processOrder">Process</button></td>
 					    </tr>
 					    <tr>
 					      <td scope="row" data-label="ID">3</td>
@@ -82,8 +79,7 @@
 					      <td data-label="Quantity">2 Plates</td>
 					      <td data-label="Unit Price">&#8358;350</td>
 					      <td data-label="Total Price">&#8358;700</td>
-					      <td data-label="Status">Processed</td>
-					      <td data-label="Actions">Done &#x2713;</td>
+					      <td data-label="Status">Processed &#x2713;</td>
 					    </tr>
 					    <tr>
 					      <td scope="row" data-label="ID">4</td>
@@ -92,7 +88,6 @@
 					      <td data-label="Unit Price">&#8358;350</td>
 					      <td data-label="Total Price">&#8358;700</td>
 					      <td data-label="Status">Pending</td>
-					      <td data-label="Actions"><button class="process-order" id="processOrder">Process</button></td>
 					    </tr>
 					    <tr>
 					      <td scope="row" data-label="ID">5</td>
@@ -100,8 +95,7 @@
 					      <td data-label="Quantity">2 Plates</td>
 					      <td data-label="Unit Price">&#8358;350</td>
 					      <td data-label="Total Price">&#8358;700</td>
-					      <td data-label="Status">Processed</td>
-					      <td data-label="Actions">Done &#x2713;</td>
+					      <td data-label="Status">Processed &#x2713;</td>
 					    </tr>
 					    <tr>
 					      <td scope="row" data-label="ID">6</td>
@@ -109,8 +103,7 @@
 					      <td data-label="Quantity">2 Plates</td>
 					      <td data-label="Unit Price">&#8358;350</td>
 					      <td data-label="Total Price">&#8358;700</td>
-					      <td data-label="Status">Processed</td>
-					      <td data-label="Actions">Done &#x2713;</td>
+					      <td data-label="Status">Processed &#x2713;</td>
 					    </tr>
 					    <tr>
 					      <td scope="row" data-label="ID">7</td>
@@ -118,8 +111,7 @@
 					      <td data-label="Quantity">2 Plates</td>
 					      <td data-label="Unit Price">&#8358;350</td>
 					      <td data-label="Total Price">&#8358;700</td>
-					      <td data-label="Status">Processed</td>
-					      <td data-label="Actions">Done &#x2713;</td>
+					      <td data-label="Status">Processed &#x2713;</td>
 					    </tr>
 					  </tbody>
 					</table>

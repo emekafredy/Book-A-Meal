@@ -19,7 +19,7 @@ body {
 }
 
 .brand {
-  background: #555;
+  background: #882222;
 }
 
 .nav-bar a, .right a {
@@ -35,6 +35,10 @@ body {
 .active {
   background-color: #882222;
   color: white;
+}
+
+.nav-bar a:hover {
+  background: #882222;
 }
 
 
@@ -120,4 +124,5 @@ body {
   color: #ddd;
   overflow: hidden;
   position: relative;
+  font-family: cursive;
 }
