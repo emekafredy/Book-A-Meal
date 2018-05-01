@@ -1,15 +1,15 @@
-function openForm(evt, signupType) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("signup-box");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(signupType).style.display = "block";
-    evt.currentTarget.className += " active";
-}
 
-document.getElementById("defaultOpen").click();
+let company = document.getElementById('company');
+
+document.getElementById("getAccess").onclick = function () {
+	let companyValue = company.value;
+	console.log(companyValue)
+	if (!companyValue) {
+		location.href = "menu.html";
+		// console.log('NOT WORKING');
+	} else {
+		// console.log(companyValue);
+		location.href = "set-menu.html";
+	}
+  
+};

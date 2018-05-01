@@ -1,15 +1,14 @@
 body {
-  background: #fff;
+  margin: 0;
+  margin: 0;
+	background-image: url('../files/bread.jpeg');
+  background-size: cover;
   font-family: cursive;
 }
 
 
 .nav-bar {
   background-color: #882222;
-}
-
-.brand {
-  background: #13232f;
 }
 
 .nav-bar a:hover {
@@ -37,11 +36,11 @@ h1 {
 }
 
 .box {
-  margin: 10px 0;
+  margin: 20px 40px;
   display: inline-block;
   flex-direction: column;
   width: 300px;
-  height: 370px;
+  height: 360px;
   padding-top: 20px;
   cursor: pointer;
   border:  none;
@@ -52,9 +51,14 @@ h1 {
 
 }
 
+.top-div {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
 
 .cart-button {
-  float: right;
   padding: 10px 20px;
   background: #13232f;
   opacity: 0.90;
@@ -87,19 +91,26 @@ h1 {
 
 
 .btn {
-  background: #ccc;
-  color: #000;
-  opacity: 0.80;
+  width: 60%;
+  padding: 10px 5px;
+  outline: none;
+  background: #13232f;
+  color: #ddd;
   font-weight: bold;
-  padding: 10px 20px;
-  border: none;
   border-radius: 10px;
-  width: 80%;
+  box-shadow: 1px 3px #888888;
+  opacity: 0.9;
+  margin-top: 10px;
 }
 
 .btn:hover, .submit:hover {
   cursor: pointer;
   opacity: 1;
+}
+
+.btn:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 

@@ -17,10 +17,6 @@ html {
   background-color: #882222;
 }
 
-.brand {
-  background: #13232f;
-}
-
 .nav-bar a:hover {
   background: #13232f !important;
 }
@@ -41,8 +37,8 @@ h1 {
 }
 
 #addItem {
-  width: 30%;
-  margin: 0 35%;
+  width: 20%;
+  margin: 0 40%;
   padding: 10px 0;
   outline: none;
   border-radius: 8px;
@@ -62,11 +58,11 @@ h1 {
 }
 
 .box {
-  margin: 10px 0;
+  margin: 20px 40px;
   display: inline-block;
   flex-direction: column;
   width: 300px;
-  height: 370px;
+  height: 360px;
   padding-top: 20px;
   cursor: pointer;
   border: 3px solid #ccc;
@@ -89,29 +85,40 @@ h1 {
 }
 
 .btn-right {
-  background: #A52A2A;
+  background: #882222;
   opacity: 0.78;
   color: #fff;
   font-weight: bold;
   outline: none;
   padding: 10px 20px;
+  border: none;
   border-radius: 10px;
-  margin-right: 10px;
+  margin-right: -10px;
+  margin-top: 10px;
   left: auto;
-  float: right !important;
+  flex-direction: flex-end;
+  box-shadow: 1px 3px #ccc;
 }
 
 .btn-left {
-  background: #ccc;
-  color: #000;
+  background: #13232f;
+  color: #fff;
   font-weight: bold;
   outline: none;
-  opacity: 0.86;
+  opacity: 0.90;
   padding: 10px 20px;
+  border: none;
   border-radius: 10px;
   right: auto;
   margin-left: 10px;
+  margin-top: 10px;
   float: left !important;
+  box-shadow: 1px 3px #ccc;
+}
+
+.btn-left:active, .btn-right:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .btn-right:hover {
@@ -227,8 +234,16 @@ input[type=submit]:hover {
 }
 
 @media (max-width: 768px) {
+  #addItem {
+    width: 30%;
+    margin: 0 35%;
+  }
   .card {
     width: 90%;
+  }
+
+  .box {
+    margin: 10px 0;
   }
 }
 

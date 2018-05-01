@@ -12,10 +12,6 @@ body{
   background-color: #882222;
 }
 
-.brand {
-  background: #13232f;
-}
-
 .nav-bar a:hover {
   background: #13232f !important;
 }
@@ -67,6 +63,10 @@ h3 {
   text-align: center;
   background: #fff;
 
+}
+
+.box > p {
+  padding: 2px 25px;
 }
 
 p > b {

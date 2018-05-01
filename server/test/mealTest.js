@@ -1,7 +1,6 @@
 import chai from 'chai';
 import should from 'should';
 import request from 'request';
-import util from 'util';
 
 import Meals from '../data/meals';
 

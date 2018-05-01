@@ -13,10 +13,6 @@ body{
   background-color: #882222;
 }
 
-.brand {
-  background: #13232f;
-}
-
 .nav-bar a:hover {
   background: #13232f !important;
 }
@@ -61,16 +57,17 @@ body{
   display: inline-block;
   flex-direction: column;
   width: 200px;
-  height: 150px;
+  height: 50px;
   color: #ddd;
   font-weight: bold;
+  font-family: 'Noto Serif';
   font-size: 1em;
-  line-height: 80px;
+  line-height: 15px;
   padding-top: 20px;
   border:  none;
   border-radius: 20px;
   align-items: center;
-  box-shadow: 5px 10px #888888;
+  box-shadow: 2px 5px #888888;
   outline: none;
 }
 
@@ -85,12 +82,13 @@ body{
 }
 
 .btn-orders {
-  background: #3b5998;
+  background: #13232f;
   transition: 0.5s;
+  opacity: 0.90;
 }
 
 .btn-orders:hover {
-  background: #000033;
+  opacity: 1;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -107,12 +105,13 @@ body{
 }
 
 .btn-pending {
-  background: #B2B200;
+  background: #882222;
   transition: 0.5s;
+  opacity: 0.90;
 }
 
 .btn-pending:hover {
-  background: #595900;
+  opacity: 1;
   cursor: pointer;
   transition: 0.5s;
 }

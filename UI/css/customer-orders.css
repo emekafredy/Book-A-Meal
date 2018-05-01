@@ -2,10 +2,6 @@
   background-color: #882222;
 }
 
-.brand {
-  background: #13232f;
-}
-
 .nav-bar a:hover {
   background: #13232f !important;
 }
@@ -110,6 +106,10 @@ table th {
 
 
 @media screen and (max-width: 600px) {
+
+  .checkout {
+    width: 30%;
+  }
 
   table {
     border: 0;

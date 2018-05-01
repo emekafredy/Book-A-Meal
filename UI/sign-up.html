@@ -24,47 +24,22 @@
 		
 		<div class="sign-up">
 
-			<div class="tab">
-			  <button class="tablinks" onclick="openForm(event, 'customer')" id="defaultOpen">Customer</button>
-			  <button class="tablinks" onclick="openForm(event, 'caterer')">Caterer</button>
-			</div>
-
 			<div id="customer" class="signup-box">
 				<form action="">
-					<h2>Sign Up as Customer</h2>
-					<p>Please fill out every field</p>
-					<input type="text" placeholder="First Name">
-					<input type="text" placeholder="Last Name">
+					<h2>Sign Up</h2>
+					<p>Please fill out "Company" if signing up as a Caterer</p>
+					<input type="text" placeholder="Name">
 					<input type="password" placeholder="Password">
 					<input type="password" placeholder="Confirm Password">
 					<input type="email" placeholder="Email Address">
 					<input type="text" placeholder="Phone Number">
 					<input type="text" placeholder="Contact Address" style="margin-bottom: 50px;">
+					<input type="text" placeholder="Company" style="margin-bottom: 50px;" id="company">
+					<a id="getAccess">Sign Up</a>
 
-					<a href="menu.html">Sign Up</a>
-
-					<p>Already have an account? <a href="login.html">Login here</a> </p>
+					<p style="margin-top: 40px;">Already have an account? <a href="login.html">Login here</a> </p>
 				</form>
-			</div>
-
-			<div id="caterer" class="signup-box">
-				<form action="">
-					<h2>Sign Up as Caterer</h2>
-					<p>Please fill out every field</p>
-					<input type="text" placeholder="Company's Name">
-					<input type="text" placeholder="Caterer">
-					<input type="password" placeholder="Password">
-					<input type="password" placeholder="Confirm Password">
-					<input type="email" placeholder="Email Address">
-					<input type="text" placeholder="Phone Number">
-					<input type="text" placeholder="Kitchen Address" style="margin-bottom: 50px;">
-					
-					<a href="set-menu.html">Sign Up</a>
-
-					<p>Already have an account? <a href="login.html">Login here</a> </p>
-				</form>
-			</div>
-			
+			</div>			
 		</div><br><br><br>
 
 		
