@@ -1,8 +1,19 @@
 # Book-A-Meal
 
-Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat.
+Book-A-Meal is an application that enhances customer-to-vendor interaction for easy food delivery
 
-UI Template - https://emekafredy.github.io/Book-A-Meal/UI/index.html
+UI Template - https://emeka-book-a-meal.herokuapp.com
+
+FEATURES:
+
+CUSTOMER:
+- Sign Up/Login as Customer to see available menu for the day. Make Orders from the available Options.
+
+CATERER:
+- Set Meal options for the day and process Customers' Orders.
+
+API ENDPOINTS
+
 
 
 [![Build Status](https://travis-ci.org/emekafredy/Book-A-Meal.svg)](https://travis-ci.org/emekafredy/Book-A-Meal)
