@@ -1,41 +1,44 @@
-import Menu from '../data/menu';
+import Meals from '../data/meals';
 
 const catererMenu = [];
-const MenuController = {
 
-  setMenu(req, res) {
+class Menu {
+  setMenu(request, response) {
     
-    const foundInMenu = Menu.find((m) => {
-      return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
+    const foundInMenu = Meals.find((m) => {
+      return m.title.toLowerCase() === request.body.title.toLowerCase()
     })
   
     if(foundInMenu) {
       const foundInCatererMenu = catererMenu.find((m) => {
-        return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
+        return m.title.toLowerCase() === request.body.title.toLowerCase()
       })
       
       if(!foundInCatererMenu) {
         catererMenu.push(foundInMenu)
-        res.status(201).send({
-          success: 'true',
+        response.status(201).send({
           message: 'Meal successfully added to menu',
           menu: catererMenu
         })
       } else {
-        res.status(409).send({
+        response.status(409).send({
           message: 'Meal already exists'
         })
       }
     } else {
-      res.status(404).send({
+      response.status(404).send({
         message: 'Meal does not exist'
       })
     }
-  },
+  }
 
-  getMenu(req, res) {
-    res.status(200).send({
-      success: 'true',
+  getMenu(request, response) {
+    if (catererMenu.length == 0) {
+      response.status(404).send({
+        message: 'Menu Box is empty please add meals to menu'
+      })
+    }
+    response.status(200).send({
       message: 'Menu retrieved successfully',
       menu: catererMenu
     })
@@ -43,4 +46,5 @@ const MenuController = {
 
 }
 
-export default MenuController;
+
+export default Menu;

@@ -1,33 +1,37 @@
-import MealController from '../controllers/mealController';
-import MenuController from '../controllers/menuController';
-import OrderController from '../controllers/orderController';
+import Meal from '../controllers/mealController';
+import Menu from '../controllers/menuController';
+import Order from './../controllers/orderController';
+
+const meal = new Meal();
+const menu = new Menu();
+const order = new Order();
 
 const routes = (app) => {
   
   // MEALS
-  app.get('/api/v1/meals', MealController.getMeals);
+  app.get('/api/v1/meals', meal.getMeals);
 
-  app.get('/api/v1/meals/:id', MealController.getAMeal);
+  app.get('/api/v1/meals/:id', meal.getAMeal);
 
-  app.post('/api/v1/meals', MealController.addMeal);
+  app.post('/api/v1/meals', meal.addMeal);
 
-  app.put('/api/v1/meals/:id', MealController.updateMeal);
+  app.put('/api/v1/meals/:id', meal.updateMeal);
 
-  app.delete('/api/v1/meals/:id', MealController.deleteMeal);
+  app.delete('/api/v1/meals/:id', meal.deleteMeal);
 
   // MENU
-  app.post('/api/v1/menu', MenuController.setMenu);
+  app.post('/api/v1/menu', menu.setMenu);
 
-  app.get('/api/v1/menu', MenuController.getMenu);
+  app.get('/api/v1/menu', menu.getMenu);
 
   // ORDERS
-  app.post('/api/v1/orders', OrderController.makeOrder);
+  app.post('/api/v1/orders', order.makeOrder);
   
-  app.get('/api/v1/orders', OrderController.getOrders);
+  app.get('/api/v1/orders', order.getOrders);
 
-  app.get('/api/v1/orders/:id', OrderController.getAnOrder);
+  app.get('/api/v1/orders/:id', order.getAnOrder);
   
-  app.put('/api/v1/orders/:id', OrderController.updateOrder);
+  app.put('/api/v1/orders/:id', order.updateOrder);
 
 };
 

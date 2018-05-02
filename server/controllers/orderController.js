@@ -1,67 +1,64 @@
 import Menu from '../data/menu';
 
 const customerOrder = [];
-const OrderController = {
 
-  makeOrder(req, res) {
+class Order {
+  makeOrder(request, response) {
     const orderFound = Menu.find((m) => {
-      return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
+      return m.mealTitle.toLowerCase() === request.body.mealTitle.toLowerCase();
     })
   
     if(orderFound) {
       const foundCustomerOrder = customerOrder.find((m) => {
-        return m.mealTitle.toLowerCase() === req.body.mealTitle.toLowerCase()
+        return m.mealTitle.toLowerCase() === request.body.mealTitle.toLowerCase();
       })
       
       if(!foundCustomerOrder) {
-        res.status(201).send({
-          success: 'true',
+        customerOrder.push(orderFound);
+        response.status(201).send({
           message: 'Order successfully selected',
           menu: customerOrder
         })
       } else {
-        res.status(409).send({
+        response.status(409).send({
           message: 'Order already selected'
         })
       }
     }
-  },
+  }
 
-  getOrders(req, res) {
+  getOrders(request, response) {
     if (customerOrder.length < 1) {
-      res.status(409).send({
-        success: 'false',
+      response.status(409).send({
         message: 'No Order Available',
       })
     }
-    res.status(200).send({
+    response.status(200).send({
       success: 'true',
       message: 'Orders retrieved successfully',
       orders: customerOrder
     })
-  },
+  }
 
-  getAnOrder(req, res) {
-    const id = parseInt(req.params.id, 10);
+  getAnOrder(request, response) {
+    const id = parseInt(request.params.id, 10);
 
     customerOrder.map((order) => {
       if(order.id === id) {
-        return res.status(200).send({
-          success: 'true',
+        return response.status(200).send({
           message: 'Order retrieved successfully',
           order: order
         });
       }
     });
 
-    return res.status(404).send({
-      success: 'false',
+    return response.status(404).send({
       message: `Order does not exist`
     });
-  },
+  }
 
-  updateOrder(req, res) {
-    const id = parseInt(req.params.id, 10);
+  updateOrder(request, response) {
+    const id = parseInt(request.params.id, 10);
 
     let orderFound;
     let orderIndex;
@@ -74,39 +71,35 @@ const OrderController = {
     });
 
     if (!orderFound) {
-      return res.status(404).send({
-        success: 'false',
+      return response.status(404).send({
         message: 'Order not found'
       });
     }
 
-    if (!req.body.quantity) {
-      return res.status(400).send({
-        success: 'false',
+    if (!request.body.quantity) {
+      return response.status(400).send({
         message: 'Please enter an appropriate quantity'
       });
     }
 
     const updatedOrder = {
-      mealTitle: req.body.mealTitle || orderFound.mealTitle,
-      description: req.body.description || orderFound.description,
-      price: req.body.price || orderFound.price,
-      imageUrl: req.body.imageUrl || orderFound.imageUrl,
-      category: req.body.category || orderFound.category,
-      id: req.body.id || orderFound.id,
-      quantity:  req.body.quantity || orderFound.quantity,
-      totalPrice: req.body.totalPrice  || orderFound.totalPrice
+      mealTitle: request.body.mealTitle || orderFound.mealTitle,
+      description: request.body.description || orderFound.description,
+      price: request.body.price || orderFound.price,
+      imageUrl: request.body.imageUrl || orderFound.imageUrl,
+      category: request.body.category || orderFound.category,
+      id: request.body.id || orderFound.id,
+      quantity:  request.body.quantity || orderFound.quantity,
+      totalPrice: request.body.totalPrice  || orderFound.totalPrice
     }
 
     customerOrder.splice(orderIndex, 1, updatedOrder);
 
-    return res.status(201).send({
-      success: 'true',
+    return response.status(201).send({
       message: 'order updated successfully',
       updatedOrder,
     });
   }
-  
 }
 
-export default OrderController;
+export default Order;

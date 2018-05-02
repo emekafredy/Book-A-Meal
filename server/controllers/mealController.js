@@ -1,61 +1,61 @@
 import Meals from '../data/meals';
 
-const MealController = {
+class Meal {
 
-  getMeals(req, res) {
-    res.status(200).send({
-      success: 'true',
+  getMeals(request, response) {
+    response.status(200).send({
       message: 'Meals retrieved successfully',
-      meals: Meals
+      Meals
     })
-  },
+  }
 
-  getAMeal(req, res) {
-    const id = parseInt(req.params.id, 10);
+  getAMeal(request, response) {
+    const id = parseInt(request.params.id, 10);
 
     Meals.map((meal) => {
       if(meal.id === id) {
-        return res.status(200).send({
-          success: 'true',
+        return response.status(200).send({
           message: 'Meal retrieved successfully',
-          meal: meal
+          meal
         });
       }
     });
 
-    return res.status(404).send({
-      success: 'false',
+    return response.status(404).send({
       message: `Meal Option does not exist`
     });
-  },
+  }
 
-  addMeal(req, res) {
-    if(!req.body.title || !req.body.description || !req.body.price) {
-      return res.status(400).send({
-        success: 'false',
+  addMeal(request, response) {
+
+    const meal = {
+      id: Meals.length + 1,
+      title: request.body.title,
+      description: request.body.description,
+      imageUrl: request.body.imageUrl,
+      price: request.body.price
+    }
+
+    if(!request.body.title || !request.body.description || !request.body.price) {
+      return response.status(400).send({
         message: 'Please fill out the required fields'
       });
     }
-    const meal = {
-      id: Meals.length + 1,
-      title: req.body.title,
-      description: req.body.description,
-      imageUrl: req.body.imageUrl,
-      price: req.body.price
-    }
+    
     Meals.push(meal);
-    return res.status(201).send({
-      success: 'true',
+    return response.status(201).send({
       message: 'Meal successfully added',
       meal
     });
-  },
+  }
 
-  updateMeal(req, res) {
-    const id = parseInt(req.params.id, 10);
+  updateMeal(request, response) {
+    const id = parseInt(request.params.id, 10);
 
     let mealFound;
     let mealIndex;
+
+    
 
     Meals.map((meal, index) => {
       if (meal.id === id) {
@@ -65,53 +65,53 @@ const MealController = {
     });
 
     if (!mealFound) {
-      return res.status(404).send({
-        success: 'false',
+      return response.status(404).send({
         message: 'Meal not found'
       });
     }
 
-    if (!req.body.title || !req.body.description || !req.body.price) {
-      return res.status(400).send({
-        success: 'false',
+    if (!request.body.title || !request.body.description || !request.body.price) {
+      return response.status(400).send({
         message: 'Please fill out the required fields'
       });
     }
 
     const updatedMeal = {
       id: mealFound.id,
-      title: req.body.title || mealFound.title,
-      description: req.body.description || mealFound.description,
-      imageUrl: req.body.imageUrl || mealFound.imageUrl,
-      price: req.body.price || mealFound.price
+      title: request.body.title || mealFound.title,
+      description: request.body.description || mealFound.description,
+      imageUrl: request.body.imageUrl || mealFound.imageUrl,
+      price: request.body.price || mealFound.price
     }
+
+    
 
     Meals.splice(mealIndex, 1, updatedMeal);
 
-    return res.status(201).send({
-      success: 'true',
+    return response.status(201).send({
       message: 'meal updated successfully',
       updatedMeal,
     });
-  },
+  }
 
-  deleteMeal(req, res) {
-    const id = parseInt(req.params.id, 10);
+  deleteMeal(request, response) {
+    const id = parseInt(request.params.id, 10);
     Meals.map((meal, index) => {
       if(meal.id === id) {
         Meals.splice(index, 1);
-        return res.status(200).send({
-          success: 'true',
+        return response.status(200).send({
           message: 'Meal option successfully deleted'
         });
       }
     });
 
-    return res.status(404).send({
-      success: 'false',
+    return response.status(404).send({
       message: 'Meal option not found'
     })
   }
+
 }
 
-export default MealController;
+
+
+export default Meal;
