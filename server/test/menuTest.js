@@ -2,6 +2,7 @@ import chai from 'chai';
 import should from 'should';
 import request from 'request';
 
+import Meals from '../data/meals';
 import Menu from '../data/menu';
 
 
@@ -14,35 +15,20 @@ chai.use(chaiHttp);
 
 describe('API ENDPOINTS FOR MENU', () => {
 
-  describe('API to GET menu', () => {
-    it('Should return 200 for a successful request', (done) => {
-      chai.request(app)
-        .get('/api/v1/menu')
-        .send({Menu})
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res.body.message).to.equal('Menu retrieved successfully');
-          done();
-        });
-    });    
-  });
-
   describe('API to set menu', () => {
-    it('Should return 201 for a successful addition', (done) => {
+    it('Should add meal option to Menu and return updated list', (done) => {
       chai.request(app)
         .post('/api/v1/menu')
         .send({
-          id: 2,
-          mealTitle: 'Egusi Soup',
-          description: 'Egusi Soup prepared with Chicken and stockfish',
-          price: 1000,
-          imageUrl: 'http://allnigerianfoods.com/wp-content/uploads/2015/02/egusi-soup1.jpg',
-          category: 'African',
-          quantity: 3,
+          id: 1,
+          title: 'Fried Noodels',
+          description: 'Fried Noodels with roasted Pork',
+          imageUrl: 'http://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/201301-xl-stir-fried-noodles-with-roast-pork.jpg?itok=RCs_EHvq',
+          price: 500
         })
-        .end((err, res) => {
-          expect(res).to.have.status(201);
-          expect(res.body.message).to.equal('Meal successfully added to menu');
+        .end((error, response) => {
+          expect(response.body.message).to.equal('Meal successfully added to menu');
+          expect(response).to.have.status(201);
           done();
         });
     });
@@ -51,21 +37,32 @@ describe('API ENDPOINTS FOR MENU', () => {
       chai.request(app)
         .post('/api/v1/menu')
         .send({
-          id: 2,
-          mealTitle: 'Egusi Soup',
-          description: 'Egusi Soup prepared with Chicken and stockfish',
-          price: 1000,
-          imageUrl: 'http://allnigerianfoods.com/wp-content/uploads/2015/02/egusi-soup1.jpg',
-          category: 'African',
-          quantity: 3,
+          id: 1,
+          title: 'Fried Noodels',
+          description: 'Fried Noodels with roasted Pork',
+          imageUrl: 'http://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/201301-xl-stir-fried-noodles-with-roast-pork.jpg?itok=RCs_EHvq',
+          price: 500
         })
-        .end((err, res) => {
-          expect(res).to.have.status(409);
-          expect(res.body.message).to.equal('Meal already exists');
+        .end((error, response) => {
+          expect(response.body.message).to.equal('Meal already exists');
+          expect(response).to.have.status(409);
           done();
         });
     });
     
+  });
+
+  describe('API to GET menu', () => {
+    it('Should return menu list for a successful request', (done) => {
+      chai.request(app)
+        .get('/api/v1/menu')
+        .send({Menu})
+        .end((error, response) => {
+          expect(response).to.have.status(200);
+          expect(response.body.message).to.equal('Menu retrieved successfully');
+          done();
+        });
+    });    
   });
 
 });
