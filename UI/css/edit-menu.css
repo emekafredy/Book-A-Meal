@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Gaegu|IBM+Plex+Mono|Noto+Serif|Roboto+Slab');
+
+body {
+  margin: 0;
+  margin: 0;
+	background-image: url('../files/bread.jpeg');
+  background-size: cover;
+  font-family: 'Roboto Slab', serif;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-bar {
+  background-color: #882222;
+}
+
+.nav-bar a:hover {
+  background: #13232f !important;
+}
+
+.active {
+  background-color: #13232f;
+  color: white;
+}
+
+.container {
+  grid-gap: 20px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#addItem {
+  width: 20%;
+  margin: 0 40%;
+  padding: 10px 0;
+  outline: none;
+  border-radius: 8px;
+  background-color: #13232f;
+  opacity: 0.70;
+  color: #fff;
+}
+
+#addItem:hover {
+  cursor: pointer;
+  color: #fff;
+  opacity: 1;
+}
+
+.grid-show {
+  margin-top: 10px;
+}
+
+.box {
+  margin: 20px 40px;
+  display: inline-block;
+  flex-direction: column;
+  width: 300px;
+  height: 360px;
+  padding-top: 20px;
+  cursor: pointer;
+  border: 3px solid #ccc;
+  border-radius: 10px;
+  background-color: #D52F2F;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.box > p {
+  background: #fff;
+  height: 50px;
+  text-align: center;
+}
+
+.box > img {
+  width: 100% !important;
+  height: 200px;
+}
+
+.btn-right {
+  background: #882222;
+  opacity: 0.78;
+  color: #fff;
+  font-weight: bold;
+  outline: none;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  margin-right: -10px;
+  margin-top: 10px;
+  left: auto;
+  flex-direction: flex-end;
+  box-shadow: 1px 3px #ccc;
+}
+
+.btn-left {
+  background: #13232f;
+  color: #fff;
+  font-weight: bold;
+  outline: none;
+  opacity: 0.90;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  right: auto;
+  margin-left: 10px;
+  margin-top: 10px;
+  float: left !important;
+  box-shadow: 1px 3px #ccc;
+}
+
+.btn-left:active, .btn-right:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.btn-right:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.btn-left:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+/*EDIT MENU MODAL DISPLAY*/
+
+#editModal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.6);;
+}
+
+.card {
+  width: 40%;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color: #f4f4f4;
+}
+
+.form-group {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+input[type=text], [type=file] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 40%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.finishEdit {
+  border: none;
+  outline: 0;
+  /* display: inline-block; */
+  padding: 8px;
+  color: white;
+  background-color: #0038a8;
+  text-align: center;
+  cursor: pointer;
+  width: 60%;
+  font-size: 15px;
+}
+
+.finishEdit:hover {
+  background: #002366;
+}
+
+.close-btn {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.close-btn:hover, a:hover {
+  opacity: 0.7;
+}
+
+.card-title {
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 10px;
+  height: 70px;
+
+}
+
+@media (max-width: 768px) {
+  #addItem {
+    width: 30%;
+    margin: 0 35%;
+  }
+  .card {
+    width: 90%;
+  }
+
+  .box {
+    margin: 10px 0;
+  }
+}
+
+
+.footer {
+  background: #882222; 
+}

@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "extends": "airbnb",
+  "ecmaFeatures": {
+    "modules": true,
+    "spread" : true,
+    "restParams" : true
+  },
+  "env" : {
+      "browser" : true,
+      "node" : true,
+      "es6" : true,
+      "mocha": true
+  },
+  "rules" : {
+      "func-names": ["error", "never"]
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}
