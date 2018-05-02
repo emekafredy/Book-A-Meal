@@ -20,16 +20,12 @@ class Menu {
           message: 'Meal successfully added to menu',
           menu: catererMenu
         })
-      } else {
-        response.status(409).send({
-          message: 'Meal already exists'
-        })
-      }
-    } else {
-      response.status(404).send({
-        message: 'Meal does not exist'
+      } 
+    } 
+    
+      response.status(409).send({
+        message: 'Meal already exists'
       })
-    }
   }
 
   getMenu(request, response) {

@@ -11,8 +11,6 @@ const routes = (app) => {
   // MEALS
   app.get('/api/v1/meals', meal.getMeals);
 
-  app.get('/api/v1/meals/:id', meal.getAMeal);
-
   app.post('/api/v1/meals', meal.addMeal);
 
   app.put('/api/v1/meals/:id', meal.updateMeal);

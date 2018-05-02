@@ -2,7 +2,7 @@
 const meals = [
   {
     id: 1,
-    title: 'Fried Noodels',
+    title: 'Fried Noodles',
     description: 'Fried Noodels with roasted Pork',
     imageUrl: 'http://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/201301-xl-stir-fried-noodles-with-roast-pork.jpg?itok=RCs_EHvq',
     price: 500

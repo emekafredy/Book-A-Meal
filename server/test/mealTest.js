@@ -15,21 +15,18 @@ chai.use(chaiHttp);
 describe('API ENDPOINTS FOR MEAL', () => {
 
   describe('API to GET meals', () => {
-    it('Should return 200 for a successful request', (done) => {
+    it('Should return Meal Options', (done) => {
       chai.request(app)
         .get('/api/v1/meals')
-        .send({Meals})
         .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res.body.message).to.equal('Meals retrieved successfully');
+          expect(Meals[0].title).to.equal('Fried Noodles');
           done();
         });
     });
-    
   });
 
   describe('API to POST meal', () => {
-    it('Should return 201 for a successful addition', (done) => {
+    it('Should successfully add meal option', (done) => {
       chai.request(app)
         .post('/api/v1/meals')
         .send({
@@ -39,13 +36,12 @@ describe('API ENDPOINTS FOR MEAL', () => {
           price: 800,
         })
         .end((err, res) => {
-          expect(res).to.have.status(201);
-          expect(res.body.message).to.equal('Meal successfully added');
+          expect(Meals[3].description).to.equal('Yam Sauce with beef');
           done();
         });
     });
 
-    it('Should return 400 if required fields are not filled out', (done) => {
+    it('Should not add meal option if required fields are not filled out', (done) => {
       chai.request(app)
         .post('/api/v1/meals')
         .send({
@@ -55,11 +51,11 @@ describe('API ENDPOINTS FOR MEAL', () => {
           price: 800,
         })
         .end((err, res) => {
-          expect(res).to.have.status(400);
           expect(res.body.message).to.equal('Please fill out the required fields');
           done();
         });
     });
     
   });
+
 });

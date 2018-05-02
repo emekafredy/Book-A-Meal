@@ -9,23 +9,6 @@ class Meal {
     })
   }
 
-  getAMeal(request, response) {
-    const id = parseInt(request.params.id, 10);
-
-    Meals.map((meal) => {
-      if(meal.id === id) {
-        return response.status(200).send({
-          message: 'Meal retrieved successfully',
-          meal
-        });
-      }
-    });
-
-    return response.status(404).send({
-      message: `Meal Option does not exist`
-    });
-  }
-
   addMeal(request, response) {
 
     const meal = {
@@ -63,12 +46,6 @@ class Meal {
         mealIndex = index;
       }  
     });
-
-    if (!mealFound) {
-      return response.status(404).send({
-        message: 'Meal not found'
-      });
-    }
 
     if (!request.body.title || !request.body.description || !request.body.price) {
       return response.status(400).send({
