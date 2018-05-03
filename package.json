@@ -4,9 +4,8 @@
   "description": "An app that enhances customer-to-vendor interaction for easy food delivery",
   "main": "server.js",
   "scripts": {
-    "test": "nyc mocha --compilers js:babel-core/register ./server/test",
+    "test": " set NODE_ENV = test && nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register ./server/test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "cover": "--reporter=lcov --reporter=text-lcov nyc mocha",
     "lint": "eslint **/*.js",
     "start": "nodemon server.js --exec babel-node --"
   },
