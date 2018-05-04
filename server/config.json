@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "samuel",
+    "password": null,
+    "database": "meals_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "samuel",
+    "password": null,
+    "database": "meals_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "samuel",
+    "password": null,
+    "database": "meals_prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
