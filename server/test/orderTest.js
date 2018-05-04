@@ -36,4 +36,25 @@ describe('API ENDPOINTS FOR ORDER', () => {
     
   });
 
+  describe('API to GET Orders', () => {
+    it('Should return 201 for a successful addition', (done) => {
+      chai.request(app)
+        .get('/api/v1/orders')
+        .send({
+          id: 2,
+          mealTitle: 'Egusi Soup',
+          description: 'Egusi Soup prepared with Chicken and stockfish',
+          price: 1000,
+          imageUrl: 'http://allnigerianfoods.com/wp-content/uploads/2015/02/egusi-soup1.jpg',
+          category: 'African',
+          quantity: 3,
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+    
+  });
+
 });

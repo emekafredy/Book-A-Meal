@@ -4,6 +4,7 @@ import request from 'request';
 
 import Meals from '../data/meals';
 import Menu from '../data/menu';
+import MenuController from '../controllers/menuController'
 
 
 import chaiHttp from 'chai-http';
@@ -37,7 +38,7 @@ describe('API ENDPOINTS FOR MENU', () => {
         .post('/api/v1/menu')
         .send({
           id: 1,
-          title: 'Fried ',
+          title: 'Fried Noodles',
           description: 'Fried Noodels with roasted Pork',
           imageUrl: 'http://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/201301-xl-stir-fried-noodles-with-roast-pork.jpg?itok=RCs_EHvq',
           price: 500
