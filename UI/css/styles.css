@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Gugi|Skranji|Ubuntu');
 
 body {
-  margin: 0;
-  margin: 0;
+  margin: auto;
 	background-image: url('../files/lander3.png');
   background-size: cover;
   font-family: sans-serif;
@@ -55,13 +54,16 @@ body {
 	display: flex;
 	color: #fff;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   text-align: center;
   padding: 0 20px;
 }
 
-.lander > h1 > span {
+.lander > div {
+  margin-top: 15%;
+}
+
+.lander > div > h1 > span {
 	font-size: 0.7em;
 	font-style: italic;
 }
@@ -123,7 +125,7 @@ body {
 
 /* FOOTER DESIGN */
 .footer {
-  background: #13232f; 
+  background: #13232f;
   text-align: center;
   color: #ddd;
   overflow: hidden;
