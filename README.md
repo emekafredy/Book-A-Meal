@@ -10,3 +10,5 @@ CATERER:
 - Set Meal options for the day and process Customers' Orders.
 
 API ENDPOINTS
+
+UI Template: https://emekafredy.github.io/Book-A-Meal/UI
