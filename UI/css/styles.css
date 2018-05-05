@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Gugi|Skranji|Ubuntu');
+
+body {
+  margin: auto;
+	background-image: url('../files/lander3.png');
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+
+
+/*NAVIGATION BAR*/
+.nav-bar {
+  overflow: hidden;
+  background-color: #13232f;
+}
+
+.right {
+  float: right;
+  margin: 0 20px;
+}
+
+.brand {
+  margin-left: 20px;
+  font-family: 'Gugi';
+}
+
+.nav-bar a, .right a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #882222;
+  color: white;
+}
+
+.nav-bar a:hover {
+  background: #882222;
+}
+
+
+
+
+
+/* LANDER DESIGN */
+.lander {
+	height: 100vh;
+	display: flex;
+	color: #fff;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.lander > div {
+  margin-top: 15%;
+}
+
+.lander > div > h1 > span {
+	font-size: 0.7em;
+	font-style: italic;
+}
+
+
+
+.insight {
+  border-radius: 4px;
+	background-color: #882222;
+	opacity: 0.75;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px 18px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+.insight span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+
+.insight span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+
+.insight:hover {
+  background: #882222;
+  cursor: pointer;
+  opacity: 1;
+  transition: .5s;
+}
+
+.insight:hover span {
+  padding-right: 25px;
+}
+
+.insight:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+
+
+/* FOOTER DESIGN */
+.footer {
+  background: #13232f;
+  text-align: center;
+  color: #ddd;
+  overflow: hidden;
+  position: relative;
+  font-family: cursive;
+}
