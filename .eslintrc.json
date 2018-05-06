@@ -1,0 +1,15 @@
+{
+    "extends": "airbnb-base",
+    "rules" : {
+        "func-names": ["error", "never"],
+        "no-unused-vars": 0,
+        "no-console": "off"
+    },
+    "globals": {
+        "window": true,
+        "document": true,
+        "location": true,
+        "describe": true,
+        "it": true
+    }
+}
