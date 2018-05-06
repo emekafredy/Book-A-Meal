@@ -1,7 +1,7 @@
-document.getElementById("processOrder").onclick = function () {
-    location.href = "pending.html";
+document.getElementById('processOrder').onclick = function () {
+  window.location.href = 'pending.html';
 };
 
-document.getElementById("processedOrders").onclick = function () {
-    location.href = "processed.html";
+document.getElementById('processedOrders').onclick = function () {
+  window.location.href = 'processed.html';
 };

@@ -1,5 +1,5 @@
 
 
-document.getElementById("getAccess").onclick = function () {
-  location.href = "set-menu.html";
+document.getElementById('getAccess').onclick = function () {
+  window.location.href = 'set-menu.html';
 };
