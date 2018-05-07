@@ -27,11 +27,5 @@ export default function (sequelize, DataTypes) {
       allowNull: false,
     },
   }, {});
-  // User.associate = (models) => {
-  //   User.hasMany(models.Order, {
-  //     foreignKey: 'userId',
-  //     onDelete: 'CASCADE',
-  //   });
-  // };
   return User;
 }
