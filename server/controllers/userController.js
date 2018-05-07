@@ -19,34 +19,25 @@ class User {
 
   static userLogin(request, response) {
     const users = {
-      name: request.body.name,
       email: request.body.email,
       password: request.body.password,
     };
 
-    jwt.sign({ users }, 'secretKey', (err, token) => {
-      if (!users) {
-        response.json({ message: 'Access Forbidden' });
-      }
-      response.json({
-        token,
+    models.User.findOne({
+      where: {
+        email: request.body.email,
+      },
+    }).then((user) => {
+      jwt.sign({ user }, 'secretKey', (err, token) => {
+        if (!user) {
+          response.json({ message: 'Access Forbidden' });
+        }
+        response.send({
+          token,
+        });
       });
     });
-
-    // models.User.create(users).then((user) => {
-    //   response.send(user);
-    // });
   }
-
-  // static verifyToken(request, response, next) {
-  //   const bearerHeader = request['authorization'];
-
-  //   if (typeof bearerHeader !== 'undefined') {
-  //     return 'good';
-  //   } else {
-
-  //   }
-  // }
 }
 
 export default User;

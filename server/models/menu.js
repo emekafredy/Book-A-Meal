@@ -2,14 +2,13 @@
 export default function (sequelize, DataTypes) {
   const Menu = sequelize.define('Menu', {
     mealId: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   }, {});
   Menu.associate = (models) => {
-    Menu.belongsToMany(models.Meals, {
-      foreignKey: 'menuId',
-      through: 'MenuMeals',
+    Menu.belongsTo(models.Meals, {
+      foreignKey: 'id',
     });
   };
   return Menu;

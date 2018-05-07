@@ -4,6 +4,10 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    mealId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     processed: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -12,15 +16,14 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    total: {
-      type: DataTypes.FLOAT,
+    quantity: {
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
   }, {});
-  // Order.associate = (models) => {
-  //   Order.belongsTo(models.User, {
-  //     foreignKey: 'orderId',
-  //   });
-  // };
+  Order.associate = (models) => {
+    Order.belongsTo(models.User, { foreignKey: 'userId' });
+    Order.belongsTo(models.Meals, { foreignKey: 'mealId' });
+  };
   return Order;
 }

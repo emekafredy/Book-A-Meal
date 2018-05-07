@@ -18,10 +18,5 @@ export default function (sequelize, DataTypes) {
       allowNull: false,
     },
   }, {});
-  Meals.associate = (models) => {
-    Meals.belongsToMany(models.Menu, {
-      through: 'MealsMenu',
-    });
-  };
   return Meals;
 }

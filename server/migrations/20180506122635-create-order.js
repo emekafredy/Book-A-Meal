@@ -9,14 +9,17 @@ module.exports = {
     userId: {
       type: Sequelize.INTEGER,
     },
+    mealId: {
+      type: Sequelize.INTEGER,
+    },
     processed: {
       type: Sequelize.BOOLEAN,
     },
     date: {
       type: Sequelize.DATEONLY,
     },
-    total: {
-      type: Sequelize.FLOAT,
+    quantity: {
+      type: Sequelize.INTEGER,
     },
     createdAt: {
       allowNull: false,

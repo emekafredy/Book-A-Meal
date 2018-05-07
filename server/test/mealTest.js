@@ -2,7 +2,7 @@ import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
 import request from 'request';
 import app from '../../server';
-import meals from '../data/meals';
+import models from '../models';
 
 chai.use(chaiHttp);
 
@@ -12,10 +12,11 @@ describe('API ENDPOINTS FOR MEAL', () => {
       chai.request(app)
         .get('/api/v1/meals')
         .end((error, response) => {
-          expect(meals[0].title).to.equal('Fried Noodles');
+          expect(models.Meals.length).to.be.at.least(1);
           done();
         });
     });
+    console.log(models.Meals)
   });
 
   describe('API to POST meal', () => {

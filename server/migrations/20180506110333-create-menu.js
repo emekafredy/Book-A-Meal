@@ -7,7 +7,8 @@ module.exports = {
       type: Sequelize.INTEGER,
     },
     mealId: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
+      references: { model: 'Meals', key: 'id' },
     },
     createdAt: {
       allowNull: false,
