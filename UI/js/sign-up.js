@@ -1,15 +1,11 @@
 
-let company = document.getElementById('company');
+let userOption = document.getElementById('userOption');
 
 document.getElementById("getAccess").onclick = function () {
-	let companyValue = company.value;
-	console.log(companyValue)
-	if (!companyValue) {
+	if (userOption.value == 'customer') {
 		location.href = "menu.html";
 		// console.log('NOT WORKING');
 	} else {
-		// console.log(companyValue);
-		location.href = "set-menu.html";
+		location.href = "dashboard.html";
 	}
-  
 };

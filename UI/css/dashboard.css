@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Gaegu|IBM+Plex+Mono|Noto+Serif|Roboto+Slab');
+
+body {
+  margin: 0;
+  margin: 0;
+	background-image: url('../files/bread.jpeg');
+  background-size: cover;
+  font-family: 'Roboto Slab', serif;
+}
+
+.flex-show {
+    margin-top: 10px;
+}
+
+.dashboard-card {
+  margin: 20px 80px;
+  display: inline-block;
+  flex-direction: column;
+  width: 300px;
+  height: 200px;
+  padding-top: 20px;
+  cursor: pointer;
+  border: 3px solid #882222;
+  border-radius: 10px;
+  background-color: #000;
+  opacity: 0.80; 
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-card:hover {
+    opacity: 1;
+}
+
+.card-body {
+    background-image: url('../files/menu.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 70%;
+    margin: 0 15%;
+    height: 180px;
+    border-radius: 10px;
+}
+
+.profile {
+    background-image: url('../files/profile.png');
+}
+
+.card-body > button {
+    width: 80%;
+    margin: 40% 10%;
+    padding: 10px;
+    outline: none;
+    background: #882222;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    opacity: 0.9;
+    box-shadow: 0 3px #882222;
+}
+
+.card-body > button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.card-body > button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
