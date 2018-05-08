@@ -10,7 +10,7 @@ const routes = (app) => {
   app.get('/api/v1/meals', UserMiddleware.getUser, UserMiddleware.checkAdmin, Meal.getMeals);
   app.post('/api/v1/meals', UserMiddleware.getUser, UserMiddleware.checkAdmin, Meal.addMeal);
   app.put('/api/v1/meals/:id', UserMiddleware.getUser, UserMiddleware.checkAdmin, Meal.updateMeal);
-  app.delete('/api/v1/meals/:id', Meal.deleteMeal);
+  app.delete('/api/v1/meals/:id', UserMiddleware.getUser, UserMiddleware.checkAdmin, Meal.deleteMeal);
 
   // MENU
   app.post('/api/v1/menu', UserMiddleware.getUser, UserMiddleware.checkAdmin, Menu.setMenu);
@@ -20,6 +20,7 @@ const routes = (app) => {
   app.post('/api/v1/orders', UserMiddleware.getUser, Order.makeOrder);
   app.get('/api/v1/orders', UserMiddleware.getUser, UserMiddleware.checkAdmin, Order.getOrders);
   app.put('/api/v1/orders/:id', UserMiddleware.getUser, Order.updateOrder);
+  app.delete('/api/v1/orders/:id', UserMiddleware.getUser, UserMiddleware.checkUser, Order.cancelOrder);
 
   // USERS
   app.post('/api/v1/auth/signup', User.userSignUp);
