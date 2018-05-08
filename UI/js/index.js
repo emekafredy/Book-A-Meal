@@ -1,8 +1,7 @@
-function toggleMenu() {
-    var x = document.getElementById("navBar");
-    if (x.className === "nav-bar") {
-        x.className += " responsive";
-    } else {
-        x.className = "nav-bar";
-    }
-}
+document.getElementById("toDashboard").onclick = function () {
+    location.href = "dashboard.html";
+};
+
+document.getElementById("toMenu").onclick = function () {
+    location.href = "caterer-menu.html";
+};

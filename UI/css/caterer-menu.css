@@ -21,9 +21,19 @@ html {
   background: #13232f !important;
 }
 
-.active {
-  background-color: #13232f;
-  color: white;
+.top-div > button {
+  margin: 0 15px;
+  padding: 10px 10px;
+  background: #13232f;
+  color: #ddd;
+  border: none;
+  border-radius: 5px;
+  opacity: 0.9;
+}
+
+.top-div > button:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .container {
