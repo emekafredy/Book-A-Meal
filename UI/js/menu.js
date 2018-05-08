@@ -1,4 +1,4 @@
 
-document.getElementById("cartButton").onclick = function () {
-    location.href = "customer-orders.html";
+document.getElementById('cartButton').onclick = function () {
+  window.location.href = 'customer-orders.html';
 };

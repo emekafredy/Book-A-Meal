@@ -1,36 +1,34 @@
-import meals from '../data/meals';
-import menu from '../data/menu';
+import models from '../models';
 
 class Menu {
   static setMenu(request, response) {
-    const foundInMeal = meals.find(meal => meal.title === request.body.title);
+    const { mealId } = request.body;
 
-    if (foundInMeal) {
-      const foundInMenu = menu.find(meal => meal.title === request.body.title);
-
-      if (!foundInMenu) {
-        menu.push(foundInMeal);
-        response.status(201).send({
-          message: 'Meal successfully added to menu',
-          menu,
-        });
-      }
+    if (!mealId) {
+      return response.status(400).send({ message: 'Enter a meal ID' });
     }
 
-    response.status(409).send({
-      message: 'Meal already exists',
+    return models.Meals.findById(mealId).then((meal) => {
+      if (meal) {
+        models.Menu.create({ mealId }).then((mealMenu) => {
+          response.send(mealMenu);
+        });
+      } else {
+        response.status(404).send({ message: 'Meal not found' });
+      }
     });
   }
 
   static getMenu(request, response) {
-    if (menu.length === 0) {
-      response.status(404).send({
-        message: 'Menu Box is empty please add meals to menu',
-      });
-    }
-    response.status(200).send({
-      message: 'Menu retrieved successfully',
-      menu,
+    console.log('user', request.user);
+
+    models.Menu.findAll({
+      include: [{
+        model: models.Meals,
+        // as: 'meal',
+      }],
+    }).then((menu) => {
+      response.send(menu);
     });
   }
 }

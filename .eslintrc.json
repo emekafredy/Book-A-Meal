@@ -3,7 +3,8 @@
     "rules" : {
         "func-names": ["error", "never"],
         "no-unused-vars": 0,
-        "no-console": "off"
+        "no-console": "off",
+        "import/no-dynamic-require": 0
     },
     "globals": {
         "window": true,

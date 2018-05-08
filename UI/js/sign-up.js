@@ -1,15 +1,11 @@
 
-let company = document.getElementById('company');
+const company = document.getElementById('company');
 
-document.getElementById("getAccess").onclick = function () {
-	let companyValue = company.value;
-	console.log(companyValue)
-	if (!companyValue) {
-		location.href = "menu.html";
-		// console.log('NOT WORKING');
-	} else {
-		// console.log(companyValue);
-		location.href = "set-menu.html";
-	}
-  
+document.getElementById('getAccess').onclick = function () {
+  const companyValue = company.value;
+  if (!companyValue) {
+    window.location.href = 'menu.html';
+  } else {
+    window.location.href = 'set-menu.html';
+  }
 };

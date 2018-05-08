@@ -1,85 +1,54 @@
-import meals from '../data/meals';
+import models from '../models/';
 
 class Meal {
   static getMeals(request, response) {
-    response.status(200).json({
-      message: 'Meals retrieved successfully',
-      meals,
+    models.Meals.findAll().then((meal) => {
+      response.send(meal);
     });
   }
 
   static addMeal(request, response) {
-    const meal = {
-      id: meals.length + 1,
+    const meals = {
       title: request.body.title,
       description: request.body.description,
       imageUrl: request.body.imageUrl,
       price: request.body.price,
     };
 
-    if (!request.body.title || !request.body.description || !request.body.price) {
-      return response.status(400).send({
-        message: 'Please fill out the required fields',
-      });
-    }
-
-    meals.push(meal);
-    return response.status(201).send({
-      message: 'Meal successfully added',
-      meal,
+    models.Meals.create(meals).then((meal) => {
+      response.send(meal);
     });
   }
 
   static updateMeal(request, response) {
     const id = parseInt(request.params.id, 10);
 
-    let mealFound;
-    let mealIndex;
 
-    meals.map((meal, index) => {
-      if (meal.id === id) {
-        mealFound = meal;
-        mealIndex = index;
+    models.Meals.findById(id).then((meal) => {
+      if (meal) {
+        meal.update({
+          title: request.body.title || meal.title,
+          description: request.body.description || meal.description,
+          imageUrl: request.body.imageUrl || meal.imageUrl,
+          price: request.body.price || meal.price,
+        }).then((updatedMeal) => {
+          response.send(updatedMeal);
+        });
       }
-      return null;
-    });
-
-    if (!request.body.title || !request.body.description || !request.body.price) {
-      return response.status(400).send({
-        message: 'Please fill out the required fields',
-      });
-    }
-
-    const updatedMeal = {
-      id: mealFound.id,
-      title: request.body.title || mealFound.title,
-      description: request.body.description || mealFound.description,
-      imageUrl: request.body.imageUrl || mealFound.imageUrl,
-      price: request.body.price || mealFound.price,
-    };
-
-    meals.splice(mealIndex, 1, updatedMeal);
-
-    return response.status(201).send({
-      message: 'meal updated successfully',
-      updatedMeal,
     });
   }
 
   static deleteMeal(request, response) {
     const id = parseInt(request.params.id, 10);
-    meals.map((meal, index) => {
-      if (meal.id === id) {
-        meals.splice(index, 1);
-        return response.status(200).send({
-          message: 'Meal option successfully deleted',
+
+    models.Meals.findById(id).then((meal) => {
+      if (meal) {
+        meal.destroy().then((deletedMeal) => {
+          response.send({
+            message: 'Deleted successfully',
+          });
         });
       }
-      return null;
-    });
-
-    return response.status(404).send({
-      message: 'Meal option not found',
     });
   }
 }
