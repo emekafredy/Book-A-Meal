@@ -47,6 +47,20 @@ class Order {
       }
     });
   }
+
+  static cancelOrder(request, response) {
+    const id = parseInt(request.params.id, 10);
+
+    models.Order.findById(id).then((order) => {
+      if (order) {
+        order.destroy().then((deletedOrder) => {
+          response.send({ message: 'Order successfully deleted' });
+        });
+      } else {
+        response.status(404).send({ message: `order with id ${id} not found` });
+      }
+    });
+  }
 }
 
 export default Order;

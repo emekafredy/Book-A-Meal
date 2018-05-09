@@ -8,7 +8,7 @@ export default function (sequelize, DataTypes) {
   }, {});
   Menu.associate = (models) => {
     Menu.belongsTo(models.Meals, {
-      foreignKey: 'id',
+      foreignKey: 'mealId',
     });
   };
   return Menu;
