@@ -4,8 +4,7 @@
 			<title>Book-A-Meal</title>
 
 			<link rel="stylesheet" href="./css/styles.css">
-			<link rel="stylesheet" href="./css/nav-res.css">
-			<link rel="stylesheet" href="./css/edit-menu.css">
+			<link rel="stylesheet" href="./css/caterer-menu.css">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -15,23 +14,19 @@
 		  <a href="index.html" class="brand">Book-A-Meal</a>
 		  
 		<div class="right">
-	      <a href="set-menu.html">Set Menu</a>
-	      <a href="edit-menu.html" class="active">Edit Menu</a>
-	      <a href="order.html">Order Summary</a>
 		  <a href="index.html">Logout</a>
-		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toggleMenu()">&#9776;</a>
 		 </div>
 		</nav>
 
 		
 		<div id="editModal"></div>
 		<div id="addModal"></div>
-		<div class="container">
-			<div>
-				<h1>Modify Your Options</h1>
-			</div><hr>
-
-			<button id="addItem" onclick="addItem();">Add new Item</button><hr>
+		<div class="container"> 
+			<div class="top-div"> <hr>				
+				<button style="float: left" id="toDashboard"> << dashboard </button>
+				<span style="text-align: center; font-size: 1.2em;">Menu for The Day</span>
+				<button style="float: right" id="toOrders"> view orders >> </button>
+			</div> <br> <hr>
 
 			<section class="grid-show">
 				<div class="box">
@@ -85,6 +80,6 @@
 		</div>
 
 		<script src="./js/index.js"></script>
-		<script src="./js/edit-menu.js"></script>
+		<script src="./js/caterer-menu.js"></script>
     </body>
 </html>

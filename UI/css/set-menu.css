@@ -35,6 +35,20 @@ html {
 h1 {
   color: #000;
 }
+.top-div > button {
+  margin: 0 15px;
+  padding: 10px 10px;
+  background: #13232f;
+  color: #ddd;
+  border: none;
+  border-radius: 5px;
+  opacity: 0.9;
+}
+
+.top-div > button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
 
 .grid-show {
   margin-top: 10px;

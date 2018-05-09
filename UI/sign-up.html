@@ -27,14 +27,18 @@
 			<div id="customer" class="signup-box">
 				<form action="">
 					<h2>Sign Up</h2>
-					<p>Please fill out "Company" if signing up as a Caterer</p>
-					<input type="text" placeholder="Name">
-					<input type="password" placeholder="Password">
-					<input type="password" placeholder="Confirm Password">
-					<input type="email" placeholder="Email Address">
-					<input type="text" placeholder="Phone Number">
-					<input type="text" placeholder="Contact Address" style="margin-bottom: 50px;">
-					<input type="text" placeholder="Company" style="margin-bottom: 50px;" id="company">
+					<p>Please fill out all the fields</p>
+					<p style="float: left;">Sign up as: </p>
+					<select id="userOption" required>
+						<option value="customer">Customer</option>
+						<option value="caterer">Caterer</option>
+					</select>
+					<input type="text" placeholder="Name" required>
+					<input type="password" placeholder="Password" required>
+					<input type="password" placeholder="Confirm Password" required>
+					<input type="email" placeholder="Email Address" required>
+					<input type="text" placeholder="Phone Number" required>
+					<input type="text" placeholder="Contact Address" style="margin-bottom: 80px;" required>
 					<a id="getAccess">Sign Up</a>
 
 					<p style="margin-top: 40px;">Already have an account? <a href="login.html">Login here</a> </p>
