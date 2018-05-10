@@ -12,8 +12,16 @@ class User {
       isAdmin: request.body.isAdmin,
     };
 
-    models.User.create(users).then((user) => {
-      response.send(user);
+    models.User.findOne({ where: { email: request.body.email } }).then((foundMail) => {
+      if (foundMail) {
+        response.status(409).send({
+          message: 'Someone already registered with this e-mail address',
+        });
+      } else {
+        models.User.create(users).then((user) => {
+          response.send(user);
+        });
+      }
     });
   }
 
@@ -30,7 +38,7 @@ class User {
     }).then((user) => {
       jwt.sign({ user }, 'secretKey', (err, token) => {
         if (!user) {
-          response.json({ message: 'Access Forbidden' });
+          response.status(401).json({ message: 'Unauthorized Access Forbidden' });
         }
         response.send({
           token,

@@ -21,11 +21,14 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    company: DataTypes.STRING,
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
   }, {});
+
+  User.associate = (models) => {
+    User.hasMany(models.Order, { foreignKey: 'userId' });
+  };
   return User;
 }

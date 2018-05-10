@@ -4,10 +4,11 @@
   "description": "an application that enhances customer-to-vendor interaction for easy food delivery",
   "main": "server.js",
   "scripts": {
-    "test": "nyc --reporter=text --reporter=lcov mocha --compilers js:babel-core/register ./server/test",
+    "test": "nyc --reporter=text --reporter=lcov mocha --compilers js:babel-core/register ./server/test --env=test",
     "lint": "eslint **/*.js --fix",
     "start": "nodemon server.js --exec babel-node  --presets es2015",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "mig": "sequelize db:migrate"
   },
   "repository": {
     "type": "git",
@@ -35,12 +36,14 @@
     "istanbul": "^0.4.5",
     "jsonwebtoken": "^8.2.1",
     "mocha": "^3.0.0",
+    "moment": "^2.22.1",
     "nodemon": "^1.17.4",
     "nyc": "^11.7.1",
     "pg": "^7.4.2",
     "pg-hstore": "^2.3.2",
     "request": "^2.85.0",
-    "sequelize": "^4.37.6"
+    "sequelize": "^4.37.6",
+    "swagger": "^0.7.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
