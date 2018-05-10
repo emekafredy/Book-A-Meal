@@ -1,22 +1,29 @@
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('Menus', {
     id: {
+      type: Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER,
     },
-    mealId: {
-      type: Sequelize.INTEGER,
-      references: { model: 'Meals', key: 'id' },
+    title: {
+      type: Sequelize.STRING,
+    },
+    date: {
+      type: Sequelize.DATE,
+    },
+    isCurrent: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE,
+      type: Sequelize.DATEONLY,
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE,
+      type: Sequelize.DATEONLY,
     },
   }),
 

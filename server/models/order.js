@@ -4,10 +4,6 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    mealId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     processed: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -18,12 +14,20 @@ export default function (sequelize, DataTypes) {
     },
     quantity: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
+    },
+    deliveryAddress: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   }, {});
   Order.associate = (models) => {
     Order.belongsTo(models.User, { foreignKey: 'userId' });
-    Order.belongsTo(models.Meals, { foreignKey: 'mealId' });
+    Order.belongsToMany(models.Meal, {
+      through: 'UserOrder',
+      as: 'meals',
+      foreignKey: 'orderId',
+    });
   };
   return Order;
 }

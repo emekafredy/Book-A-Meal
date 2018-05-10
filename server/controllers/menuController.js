@@ -2,33 +2,36 @@ import models from '../models';
 
 class Menu {
   static setMenu(request, response) {
-    const { mealId } = request.body;
+    const { title, isCurrent, meals } = request.body;
+    const date = new Date();
 
-    if (!mealId) {
-      return response.status(400).send({ message: 'Enter a meal ID' });
-    }
-
-    return models.Meals.findById(mealId).then((meal) => {
-      if (meal) {
-        models.Menu.create({ mealId }).then((mealMenu) => {
-          response.send(mealMenu);
-        });
+    models.Menu.findOne({ where: { title: request.body.title } }).then((menuTitle) => {
+      if (menuTitle) {
+        response.json({ message: `${title} already created` });
       } else {
-        response.status(404).send({ message: 'Meal not found' });
+        models.Menu.create({ title, isCurrent, date }).then((createdMenu) => {
+          createdMenu.addMeals(meals).then((menus) => {
+            response.status(500).json({ message: 'Bad request' });
+          });
+        }).catch((error) => {
+          response.status(500).json({ message: 'Bad request' });
+        });
       }
+    }).catch((error) => {
+      response.status(500).json({ message: 'Bad request' });
     });
   }
 
   static getMenu(request, response) {
-    console.log('user', request.user);
-
     models.Menu.findAll({
       include: [{
-        model: models.Meals,
-        // as: 'meal',
+        model: models.Meal,
+        as: 'meals',
       }],
     }).then((menu) => {
       response.send(menu);
+    }).catch((error) => {
+      response.status(500).json({ message: 'Bad request' });
     });
   }
 }

@@ -1,33 +1,38 @@
+import momemnt from 'moment';
 import models from '../models';
 
 class Order {
   static makeOrder(request, response) {
-    const { mealId, quantity } = request.body;
+    const {
+      meals,
+      processed,
+      quantity,
+      deliveryAddress,
+    } = request.body;
+    const { id: userId } = request.user;
+    const date = new Date();
 
-    if (!mealId) {
-      return response.status(400).send({ message: 'Enter a meal ID' });
-    }
-
-    return models.Meals.findById(mealId).then((meal) => {
-      if (meal) {
-        models.Order.create({
-          mealId, userId: 1, processed: false, quantity, date: new Date(),
-        }).then((order) => {
-          response.send(order);
-        });
-      } else {
-        response.status(404).send({ message: 'Meal not found' });
-      }
+    models.Order.create({
+      processed: false, quantity, deliveryAddress, date, userId,
+    }).then((createdOrder) => {
+      createdOrder.addMeals(meals).then(() => {
+        response.send(createdOrder);
+      });
     });
   }
 
   static getOrders(request, response) {
     return models.Order.findAll({
       include: [{
-        model: models.Meals,
+        model: models.Meal,
+        as: 'meals',
       }],
     }).then((orders) => {
-      response.send(orders);
+      if (orders.length === 0) {
+        response.status(404).json({ message: 'No ' });
+      } else {
+        response.send(orders);
+      }
     });
   }
 
@@ -54,7 +59,7 @@ class Order {
     models.Order.findById(id).then((order) => {
       if (order) {
         order.destroy().then((deletedOrder) => {
-          response.send({ message: 'Order successfully deleted' });
+          response.send({ message: 'Order successfully removed' });
         });
       } else {
         response.status(404).send({ message: `order with id ${id} not found` });
