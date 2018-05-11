@@ -57,15 +57,14 @@ class Order {
       if (order) {
         const orderTime = moment(order.createdAt);
         const setExpiration = moment();
-        const difference = orderTime.diff(setExpiration, 'h');
-        console.log('diff', difference);
+        const difference = setExpiration.diff(orderTime, 'h');
         if (difference < 1) {
           order.update({
             quantity: request.body.quantity || order.quantity,
             processed: request.body.processed ? true : order.processed,
           }).then(updatedOrder => response.send(updatedOrder));
         } else {
-          return response.status().send({ message: 'You can no longer update this order' });
+          return response.status(504).send({ message: 'You can no longer update this order' });
         }
       } else {
         response.status(404).send({ message: 'Order not found' });
@@ -88,17 +87,17 @@ class Order {
       if (order) {
         const orderTime = moment(order.createdAt);
         const setExpiration = moment();
-        const difference = orderTime.diff(setExpiration, 'h');
-        if (difference < 2) {
+        const difference = setExpiration.diff(orderTime, 'h');
+        if (difference < 1) {
           order.destroy().then((deletedOrder) => {
             response.status(201).json({
-              message: 'Deleted successfully',
+              message: 'Order successfully removed',
             });
           }).catch((error) => {
             response.status(500).json(error);
           });
         } else {
-          return response.status().json({ message: 'You can no longer delete this order' });
+          return response.status(504).json({ message: 'You can no longer cancel this order' });
         }
       } else {
         response.status(404).json({

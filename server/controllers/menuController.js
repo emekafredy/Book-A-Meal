@@ -43,8 +43,8 @@ class Menu {
       if (menus) {
         const menuTime = moment(menus.createdAt);
         const setExpiration = moment();
-        const difference = menuTime.diff(setExpiration, 'h');
-        if (difference < 2) {
+        const difference = setExpiration.diff(menuTime, 'h');
+        if (difference < 12) {
           return models.Menu.findOne({
             include: [{
               model: models.Meal,
