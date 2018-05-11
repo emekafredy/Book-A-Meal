@@ -1,37 +1,64 @@
+import moment from 'moment';
 import models from '../models';
 
+/**
+ * Represents the Menu controller
+ * @class
+ */
 class Menu {
+  /**
+   * Set Menu for the day
+   * @method
+   * @param {object} request - Send request to set menu
+   * @param {object} response  - Get response
+   */
   static setMenu(request, response) {
-    const { title, isCurrent, meals } = request.body;
+    const { meals } = request.body;
     const date = new Date();
 
-    models.Menu.findOne({ where: { title: request.body.title } }).then((menuTitle) => {
-      if (menuTitle) {
-        response.json({ message: `${title} already created` });
-      } else {
-        models.Menu.create({ title, isCurrent, date }).then((createdMenu) => {
-          createdMenu.addMeals(meals).then((menus) => {
-            response.status(500).json({ message: 'Bad request' });
-          });
-        }).catch((error) => {
-          response.status(500).json({ message: 'Bad request' });
-        });
+    return models.Menu.findOne({ where: { date } }).then((menu) => {
+      if (menu) {
+        return response.status(409).json({ message: `Menu for ${date} already created` });
       }
-    }).catch((error) => {
-      response.status(500).json({ message: 'Bad request' });
-    });
+      return models.Menu.create({ meals, date }).then((createdMenu) => {
+        createdMenu.addMeals(meals).then((menus) => {
+          const modifiedDate = moment(date).format('ddd, YYYY-MM-DD');
+          response.status(201).json({ message: ` Menu for ${modifiedDate} successfully created`, createdMenu });
+        }).catch(error => response.status(400).send(error));
+      }).catch(error => response.status(400).json(error));
+    }).catch(error => response.status(400).json(error));
   }
 
+  /**
+   * Get All set Menu
+   * @method
+   * @param {object} request - Send request to get menu
+   * @param {object} response  - Get response
+   */
   static getMenu(request, response) {
-    models.Menu.findAll({
-      include: [{
-        model: models.Meal,
-        as: 'meals',
-      }],
-    }).then((menu) => {
-      response.send(menu);
-    }).catch((error) => {
-      response.status(500).json({ message: 'Bad request' });
+    const date = moment().format('YYYY-MM-DD');
+    return models.Menu.findAll({
+      where: { date },
+    }).then((menus) => {
+      if (menus) {
+        const menuTime = moment(menus.createdAt);
+        const setExpiration = moment();
+        const difference = menuTime.diff(setExpiration, 'h');
+        if (difference < 2) {
+          return models.Menu.findOne({
+            include: [{
+              model: models.Meal,
+              as: 'meals',
+            }],
+          }).then((menu) => {
+            response.send(menu);
+          }).catch((error) => {
+            response.status(500).json(error);
+          });
+        }
+        return response.status().json({ message: 'Menu no longer available' });
+      }
+      return response.send({ message: 'Menu not available yet' });
     });
   }
 }
