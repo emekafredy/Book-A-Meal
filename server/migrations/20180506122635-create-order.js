@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('Orders', {
     id: {
@@ -9,14 +11,20 @@ module.exports = {
     userId: {
       type: Sequelize.INTEGER,
     },
+    mealId: {
+      type: Sequelize.INTEGER,
+    },
     processed: {
       type: Sequelize.BOOLEAN,
+      defaultValue: false,
     },
     date: {
-      type: Sequelize.DATEONLY,
+      type: Sequelize.STRING,
+      defaultValue: moment().format('MMM Do YYYY, h:mm:ss a'),
     },
     quantity: {
       type: Sequelize.INTEGER,
+      defaultValue: 1,
     },
     deliveryAddress: {
       type: Sequelize.STRING,

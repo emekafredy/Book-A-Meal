@@ -1,3 +1,5 @@
+
+
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('Menus', {
     id: {
@@ -6,16 +8,9 @@ module.exports = {
       autoIncrement: true,
       primaryKey: true,
     },
-    title: {
-      type: Sequelize.STRING,
-    },
     date: {
-      type: Sequelize.DATE,
-    },
-    isCurrent: {
-      type: Sequelize.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
+      type: Sequelize.DATEONLY,
+      defaultValue: new Date(),
     },
     createdAt: {
       allowNull: false,

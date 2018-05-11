@@ -22,9 +22,6 @@ module.exports = {
     address: {
       type: Sequelize.STRING,
     },
-    company: {
-      type: Sequelize.STRING,
-    },
     isAdmin: {
       type: Sequelize.BOOLEAN,
     },

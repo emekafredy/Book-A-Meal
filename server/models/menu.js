@@ -1,17 +1,10 @@
 
 export default function (sequelize, DataTypes) {
   const Menu = sequelize.define('Menu', {
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
-    },
-    isCurrent: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
+      defaultValue: new Date(),
     },
   }, {});
   Menu.associate = (models) => {
@@ -19,6 +12,11 @@ export default function (sequelize, DataTypes) {
       through: 'MealsMenu',
       as: 'meals',
       foreignKey: 'menuId',
+    });
+    Menu.belongsToMany(models.Order, {
+      through: 'UserOrder',
+      as: 'orders',
+      foreignKey: 'mealId',
     });
   };
   return Menu;

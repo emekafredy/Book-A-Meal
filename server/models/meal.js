@@ -17,6 +17,11 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1,
+    },
   }, {});
   Meal.associate = (models) => {
     Meal.belongsToMany(models.Menu, {
@@ -24,11 +29,7 @@ export default function (sequelize, DataTypes) {
       as: 'menus',
       foreignKey: 'mealId',
     });
-    Meal.belongsToMany(models.Order, {
-      through: 'UserOrder',
-      as: 'orders',
-      foreignKey: 'mealId',
-    });
+    Meal.hasMany(models.Order, { foreignKey: 'mealId' });
   };
   return Meal;
 }
