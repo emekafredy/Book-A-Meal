@@ -10,13 +10,13 @@ class UserMiddleware {
       const token = request.headers.authorization.split(' ')[1];
       return jwt.verify(token, 'secretKey', { expiresIn: 60 }, (err, decoded) => {
         if (err) {
-          return next(err);
+          return response.status(500).send({ message: 'Please register or login to gain access' });
         }
         request.user = decoded.user;
         return next();
       });
     }
-    return next('Register/Login to gain access');
+    return response.status(500).send({ message: 'Internal server error' });
   }
 
 
@@ -24,7 +24,7 @@ class UserMiddleware {
     if (request.user.isAdmin) {
       return next();
     }
-    return next('User not an Admin');
+    return response.status(500).send({ message: 'User not an Admin' });
   }
 }
 
