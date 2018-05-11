@@ -4,6 +4,9 @@ import orderRoutes from '../routes/orderRoutes';
 import userRoutes from '../routes/userRoutes';
 
 const routes = (app) => {
+  app.get('/', (request, response) => {
+    response.json({ message: 'Welcome Book-A-Meal API, Version 1' });
+  });
   mealRoutes(app);
   menuRoutes(app);
   orderRoutes(app);
