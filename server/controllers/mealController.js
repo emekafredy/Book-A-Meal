@@ -14,7 +14,7 @@ class Meal {
     models.Meal.findAll().then((meal) => {
       response.send(meal);
     }).catch((error) => {
-      response.status(400).json(error);
+      response.status(401).json({ message: 'Please sign up or login to gain access' });
     });
   }
 
