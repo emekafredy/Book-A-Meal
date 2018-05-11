@@ -8,7 +8,7 @@
     "lint": "eslint **/*.js --fix",
     "start": "nodemon server.js --exec babel-node  --presets es2015",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "mig": "sequelize db:migrate"
+    "mig": "node_modules/.bin/sequelize db:migrate"
   },
   "repository": {
     "type": "git",
