@@ -1,3 +1,3 @@
 web: npm start
-migrate: node_modules/.bin/sequelize db:migrate
+migrate: npm run mig
 sequelize npm install -g sequelize-cli
