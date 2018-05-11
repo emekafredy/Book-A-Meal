@@ -16,7 +16,7 @@ class UserMiddleware {
         return next();
       });
     }
-    return next('User token not found');
+    return next('Register/Login to gain access');
   }
 
 

@@ -58,7 +58,9 @@ class Order {
         const orderTime = moment(order.createdAt);
         const setExpiration = moment();
         const difference = setExpiration.diff(orderTime, 'h');
+
         console.log('diff', difference);
+
         if (difference < 1) {
           order.update({
             quantity: request.body.quantity || order.quantity,
@@ -92,7 +94,7 @@ class Order {
         if (difference < 1) {
           order.destroy().then((deletedOrder) => {
             response.status(201).json({
-              message: 'Deleted successfully',
+              message: 'Order successfully removed',
             });
           }).catch((error) => {
             response.status(500).json(error);
