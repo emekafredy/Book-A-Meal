@@ -16,7 +16,7 @@ class UserMiddleware {
         return next();
       });
     }
-    return response.status(500).send({ message: 'Internal server error' });
+    return response.status(500).send({ message: 'Please Login or Signup to gain access' });
   }
 
 
